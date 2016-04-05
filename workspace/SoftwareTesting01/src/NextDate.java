@@ -8,17 +8,66 @@ import java.util.Scanner;
 public class NextDate {
 	public static String nextdate(int m, int d, int y) throws ParseException
 	{
-		if (m < 1 || m > 12) {
-			return "月份超出范围";
-		}
-
-		if (d < 1 || d > 31) {
-			return "日期超出范围";
-		}
-
-		if (y < 1912 || y > 2050) {
+		if (y < 1912 || y > 2050)
+		{
 			return "年份超出范围";
 		}
+		
+		if (m < 1 || m > 12)
+		{
+			return "月份超出范围";
+		}
+		
+		if ((y % 4==0 && y % 100 !=0) ||( y % 400 ==0))
+		{
+		   if(m==2)
+		   {
+			  if (d < 1 || d > 29)
+		      {
+			    return "日期超出范围";
+		      }
+		   }
+		   else if(m==1 || m==3 || m==5|| m==7|| m==8|| m==10|| m==12)
+			  {
+				  if(d<1 || d>31)
+				  {
+					  return "日期超出范围";
+				  }
+			  }
+		else if( m==4|| m==6|| m==9|| m==11)
+			  {
+				  if(d<1 || d>30)
+				  {
+					  return "日期超出范围";
+				  }
+		       }
+		   
+		}
+		else
+			{
+			if(m==2)
+			 {
+				if(d<1 || d>28)
+				{
+					return "日期超出范围";
+				}
+			 }
+			 else if(m==1 || m==3 || m==5|| m==7|| m==8|| m==10|| m==12)
+				   { 
+					  if(d<1 || d>31)
+					  {
+						  return "日期超出范围";
+					  }
+				   }
+			 else if( m==4|| m==6|| m==9|| m==11)
+				   {
+					  if(d<1 || d>30)
+					  {
+						  return "日期超出范围";
+					  }
+			       }
+			  
+			}
 		SimpleDateFormat sf = new SimpleDateFormat("yyyy年MM月dd日");
 		Calendar c = Calendar.getInstance();
 		c.setTime(sf.parse(y + "年" + m + "月" + d + "日"));
@@ -27,11 +76,6 @@ public class NextDate {
 		return sf.format(c.getTime());
 	}
 	
-	
-	public NextDate() {
-	}
-
-
 	public static void main(String[] args)
 	{
 		int year = 0;
@@ -40,7 +84,7 @@ public class NextDate {
 		String result = null;
 		
 		Scanner in = new Scanner(System.in);
-		System.out.printf("请输入月日年的整数，用空格隔开：");
+		System.out.print("请输入月日年的整数，用空格隔开：");
 		
 		while(true)
 		{
@@ -66,7 +110,7 @@ public class NextDate {
 			//System.out.printf("");
 		}
 		
-		System.out.printf("程序结束！");
+		System.out.print("程序结束！");
 		
 		
 	}
