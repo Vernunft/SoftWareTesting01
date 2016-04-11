@@ -1,4 +1,4 @@
-第七周答复：问题已解决
+
 import java.util.Scanner;
 public class test {
   
